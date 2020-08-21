@@ -1,0 +1,29 @@
+.set-status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    height: 100px;
+}
+
+.set-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.green {
+    background-color: #07B050;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.purple {
+    background-color: #7037a7;
+}
+
+.not-selected {
+    opacity: 0.3;
+}

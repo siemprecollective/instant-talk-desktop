@@ -1,0 +1,74 @@
+{
+        "name": "SiempreOne",
+        "description": "Live with whoever, wherever you are",
+        "version": "0.1.0",
+        "author": {
+            "name": "Siempre, Inc.",
+            "email": "phillip@siempre.io"
+        },
+        "private": true,
+        "dependencies": {
+                "concurrently": "^4.1.0",
+                "cross-env": "^5.2.0",
+                "electron-is-dev": "^1.1.0",
+                "firebase": "^6.1.0",
+                "react": "^16.8.6",
+                "react-dom": "^16.8.6",
+                "react-scripts": "3.0.1",
+                "twilio": "^3.31.1",
+                "twilio-client": "^1.7.3",
+                "wait-on": "^3.2.0"
+        },
+        "scripts": {
+                "dev": "react-scripts start",
+                "build": "react-scripts build",
+                "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+                "pack": "electron-builder --dir",
+                "predist": "npm run build && cp icon.png build",
+                "dist": "electron-builder -c.extraMetadata.main=build/electron.js -mlw",
+                "postinstall": "electron-builder install app-deps"
+        },
+        "eslintConfig": {
+                "extends": "react-app"
+        },
+        "browserslist": {
+                "production": [
+                        ">0.2%",
+                        "not dead",
+                        "not op_mini all"
+                ],
+                "development": [
+                        "last 1 chrome version",
+                        "last 1 firefox version",
+                        "last 1 safari version"
+                ]
+        },
+        "devDependencies": {
+                "electron": "^5.0.2",
+                "electron-builder": "^20.43.0",
+                "electron-devtools-installer": "^2.2.4",
+                "typescript": "^3.5.1"
+        },
+        "main": "public/electron.js",
+        "build": {
+                "appId": "com.siempre.siempreonedesktop",
+                "files": [
+                  "build/**/*",
+                  "node_modules/**/*"
+                ],
+                "directories": {
+                  "buildResources": "assets"
+                },
+                "mac": {
+                    "category": "public.app-category.social-networking"
+                },
+                "dmg": {
+                    "icon": "build/icon.png"
+                },
+                "linux": {
+                    "icon": "build/icon.png"
+                },
+                "extends": null
+        },
+        "homepage": "./"
+}
